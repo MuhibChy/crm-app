@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Management - CRM App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="assets/app.css" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
+    <script defer src="assets/app.js"></script>
+</head>
+<body class="text-gray-100">
+    <nav class="glass-nav">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16 items-center">
+                <div class="text-lg font-semibold">🚀 CRM App - AI-Powered</div>
+                <div class="space-x-4 text-sm">
+                    <a href="index.html" class="text-indigo-300 hover:text-white">Dashboard</a>
+                    <a href="demo-email.html" class="text-indigo-300 hover:text-white">Email Demo</a>
+                    <a href="demo-accounts.html" class="text-indigo-300 hover:text-white">Accounts</a>
+                    <a href="test-ui.html" class="text-indigo-300 hover:text-white">UI Test</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto mt-6 content-container">
+        <div class="p-6 glass-surface rounded animate-fadeInUp">
+            <div class="flex items-center justify-between mb-6">
+                <h1 class="text-3xl font-bold text-gray-100">🏢 Account Management</h1>
+                <button class="glass-card px-4 py-2 rounded-lg hover:scale-105 transition-transform duration-200">
+                    ➕ Add Account
+                </button>
+            </div>
+
+            <!-- Account Configuration Form -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="glass-card p-6 rounded-lg">
+                    <h2 class="text-lg font-semibold text-gray-100 mb-4">📧 Email Account Setup</h2>
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Account Label</label>
+                            <input type="text" class="glass-input w-full rounded px-3 py-2" placeholder="e.g., Support Team" value="Main Business Account">
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">IMAP Host</label>
+                                <input type="text" class="glass-input w-full rounded px-3 py-2" placeholder="imap.gmail.com" value="imap.gmail.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">IMAP Port</label>
+                                <input type="number" class="glass-input w-full rounded px-3 py-2" placeholder="993" value="993">
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">SMTP Host</label>
+                                <input type="text" class="glass-input w-full rounded px-3 py-2" placeholder="smtp.gmail.com" value="smtp.gmail.com">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-300 mb-2">SMTP Port</label>
+                                <input type="number" class="glass-input w-full rounded px-3 py-2" placeholder="587" value="587">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+                            <input type="email" class="glass-input w-full rounded px-3 py-2" placeholder="your@email.com" value="demo@company.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Password / App Password</label>
+                            <input type="password" class="glass-input w-full rounded px-3 py-2" placeholder="••••••••" value="••••••••">
+                        </div>
+                        <div class="flex space-x-4">
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" class="rounded" checked>
+                                <span class="text-sm text-gray-300">IMAP SSL</span>
+                            </label>
+                            <label class="flex items-center space-x-2">
+                                <input type="checkbox" class="rounded" checked>
+                                <span class="text-sm text-gray-300">SMTP TLS</span>
+                            </label>
+                        </div>
+                        <div class="flex space-x-2">
+                            <button type="submit" class="glass-card px-4 py-2 rounded hover:scale-105 transition-transform duration-200">
+                                💾 Save Account
+                            </button>
+                            <button type="button" class="glass-card px-4 py-2 rounded hover:scale-105 transition-transform duration-200">
+                                🔍 Test Connection
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="glass-card p-6 rounded-lg">
+                    <h2 class="text-lg font-semibold text-gray-100 mb-4">📊 Account Status</h2>
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between p-3 bg-green-900 bg-opacity-30 rounded-lg border border-green-500">
+                            <div>
+                                <p class="font-medium text-green-300">Main Business Account</p>
+                                <p class="text-sm text-gray-300">demo@company.com</p>
+                                <p class="text-xs text-gray-400">IMAP: imap.gmail.com • SMTP: smtp.gmail.com</p>
+                            </div>
+                            <div class="text-green-400">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-blue-900 bg-opacity-30 rounded-lg border border-blue-500">
+                            <div>
+                                <p class="font-medium text-blue-300">Support Team</p>
+                                <p class="text-sm text-gray-300">support@company.com</p>
+                                <p class="text-xs text-gray-400">IMAP: imap.company.com • SMTP: smtp.company.com</p>
+                            </div>
+                            <div class="text-blue-400">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center justify-between p-3 bg-yellow-900 bg-opacity-30 rounded-lg border border-yellow-500">
+                            <div>
+                                <p class="font-medium text-yellow-300">Sales Team</p>
+                                <p class="text-sm text-gray-300">sales@company.com</p>
+                                <p class="text-xs text-gray-400">IMAP: imap.outlook.com • SMTP: smtp.outlook.com</p>
+                            </div>
+                            <div class="text-yellow-400">
+                                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 p-4 bg-gray-800 rounded-lg">
+                        <h3 class="font-medium text-gray-100 mb-2">🔧 Configuration Tips</h3>
+                        <ul class="text-sm text-gray-300 space-y-1">
+                            <li>• For Gmail: Enable 2-Step Verification and use App Passwords</li>
+                            <li>• For Outlook: Use your Microsoft account credentials</li>
+                            <li>• Test connection before saving to ensure proper setup</li>
+                            <li>• Use SSL/TLS for secure email transmission</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Integration Options -->
+            <div class="glass-card p-6 rounded-lg">
+                <h2 class="text-lg font-semibold text-gray-100 mb-4">🔗 Third-Party Integrations</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="p-4 bg-blue-900 bg-opacity-30 rounded-lg border border-blue-500">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                                <span class="text-white font-bold text-sm">M</span>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-blue-300">Microsoft 365</h3>
+                                <p class="text-xs text-gray-400">OAuth2 Integration</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-300 mb-3">Connect your Microsoft 365 account for seamless email and calendar integration.</p>
+                        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded text-sm transition-colors">
+                            Connect Microsoft
+                        </button>
+                    </div>
+
+                    <div class="p-4 bg-green-900 bg-opacity-30 rounded-lg border border-green-500">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-8 h-8 bg-green-600 rounded-lg flex items-center justify-center">
+                                <span class="text-white font-bold text-sm">G</span>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-green-300">Google Workspace</h3>
+                                <p class="text-xs text-gray-400">API Integration</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-300 mb-3">Integrate with Google Sheets and Gmail for enhanced productivity.</p>
+                        <button class="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded text-sm transition-colors">
+                            Connect Google
+                        </button>
+                    </div>
+
+                    <div class="p-4 bg-purple-900 bg-opacity-30 rounded-lg border border-purple-500">
+                        <div class="flex items-center space-x-3 mb-3">
+                            <div class="w-8 h-8 bg-purple-600 rounded-lg flex items-center justify-center">
+                                <span class="text-white font-bold text-sm">AI</span>
+                            </div>
+                            <div>
+                                <h3 class="font-medium text-purple-300">OpenAI GPT</h3>
+                                <p class="text-xs text-gray-400">AI Assistant</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-300 mb-3">Enable AI-powered email responses and customer insights.</p>
+                        <button class="w-full bg-purple-600 hover:bg-purple-700 text-white py-2 px-4 rounded text-sm transition-colors">
+                            Configure AI
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-12 py-6 text-center text-sm text-gray-400 glass-footer">
+        <div class="max-w-7xl mx-auto px-4">
+            © 2024 CRM App - Account Management System | 
+            <a href="https://github.com/MuhibChy/crm-app" class="text-indigo-300 hover:text-white">GitHub</a>
+        </div>
+    </footer>
+</body>
+</html>

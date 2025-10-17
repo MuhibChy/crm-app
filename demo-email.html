@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Management - CRM App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="assets/app.css" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
+    <script defer src="assets/app.js"></script>
+</head>
+<body class="text-gray-100">
+    <nav class="glass-nav">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16 items-center">
+                <div class="text-lg font-semibold">🚀 CRM App - AI-Powered</div>
+                <div class="space-x-4 text-sm">
+                    <a href="index.html" class="text-indigo-300 hover:text-white">Dashboard</a>
+                    <a href="demo-email.html" class="text-indigo-300 hover:text-white">Email Demo</a>
+                    <a href="demo-accounts.html" class="text-indigo-300 hover:text-white">Accounts</a>
+                    <a href="test-ui.html" class="text-indigo-300 hover:text-white">UI Test</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto mt-6 content-container">
+        <div class="p-6 glass-surface rounded animate-fadeInUp">
+            <div class="flex items-center justify-between mb-6">
+                <h1 class="text-3xl font-bold text-gray-100">📧 Email Management</h1>
+                <button class="glass-card px-4 py-2 rounded-lg hover:scale-105 transition-transform duration-200">
+                    ✉️ Compose Email
+                </button>
+            </div>
+
+            <!-- Email Stats -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                <div class="glass-card p-4 rounded-lg">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-300">Inbox</p>
+                            <p class="text-xl font-bold text-blue-400">23</p>
+                        </div>
+                        <div class="text-blue-400">📥</div>
+                    </div>
+                </div>
+                <div class="glass-card p-4 rounded-lg">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-300">Sent</p>
+                            <p class="text-xl font-bold text-green-400">156</p>
+                        </div>
+                        <div class="text-green-400">📤</div>
+                    </div>
+                </div>
+                <div class="glass-card p-4 rounded-lg">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-300">AI Responses</p>
+                            <p class="text-xl font-bold text-purple-400">42</p>
+                        </div>
+                        <div class="text-purple-400">🤖</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Email List -->
+            <div class="glass-card rounded-lg overflow-hidden">
+                <div class="p-4 border-b border-gray-600">
+                    <h2 class="text-lg font-semibold text-gray-100">Recent Emails</h2>
+                </div>
+                <div class="divide-y divide-gray-600">
+                    <div class="p-4 hover:bg-gray-800 transition-colors cursor-pointer">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-1">
+                                    <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
+                                    <span class="font-medium text-gray-100">John Smith</span>
+                                    <span class="text-xs text-gray-400">john@company.com</span>
+                                </div>
+                                <h3 class="font-medium text-gray-200 mb-1">Project Update Required</h3>
+                                <p class="text-sm text-gray-400">Hi, I need an update on the current project status. Could you please...</p>
+                            </div>
+                            <div class="text-xs text-gray-400 ml-4">
+                                <div>2:30 PM</div>
+                                <div class="mt-1">
+                                    <span class="bg-yellow-600 text-yellow-100 px-2 py-1 rounded-full text-xs">High</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-2 flex items-center space-x-2">
+                            <button class="text-xs bg-blue-600 text-blue-100 px-2 py-1 rounded">Reply</button>
+                            <button class="text-xs bg-purple-600 text-purple-100 px-2 py-1 rounded">🤖 AI Suggest</button>
+                        </div>
+                    </div>
+
+                    <div class="p-4 hover:bg-gray-800 transition-colors cursor-pointer">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-1">
+                                    <span class="w-2 h-2 bg-green-400 rounded-full"></span>
+                                    <span class="font-medium text-gray-100">Sarah Johnson</span>
+                                    <span class="text-xs text-gray-400">sarah@client.com</span>
+                                </div>
+                                <h3 class="font-medium text-gray-200 mb-1">Thank you for the excellent service!</h3>
+                                <p class="text-sm text-gray-400">I wanted to express my gratitude for the outstanding support...</p>
+                            </div>
+                            <div class="text-xs text-gray-400 ml-4">
+                                <div>1:15 PM</div>
+                                <div class="mt-1">
+                                    <span class="bg-green-600 text-green-100 px-2 py-1 rounded-full text-xs">Low</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-2 flex items-center space-x-2">
+                            <button class="text-xs bg-blue-600 text-blue-100 px-2 py-1 rounded">Reply</button>
+                            <button class="text-xs bg-purple-600 text-purple-100 px-2 py-1 rounded">🤖 AI Suggest</button>
+                        </div>
+                    </div>
+
+                    <div class="p-4 hover:bg-gray-800 transition-colors cursor-pointer">
+                        <div class="flex items-start justify-between">
+                            <div class="flex-1">
+                                <div class="flex items-center space-x-2 mb-1">
+                                    <span class="w-2 h-2 bg-red-400 rounded-full"></span>
+                                    <span class="font-medium text-gray-100">Mike Wilson</span>
+                                    <span class="text-xs text-gray-400">mike@urgent.com</span>
+                                </div>
+                                <h3 class="font-medium text-gray-200 mb-1">URGENT: System Issue</h3>
+                                <p class="text-sm text-gray-400">We're experiencing a critical system issue that needs immediate...</p>
+                            </div>
+                            <div class="text-xs text-gray-400 ml-4">
+                                <div>11:45 AM</div>
+                                <div class="mt-1">
+                                    <span class="bg-red-600 text-red-100 px-2 py-1 rounded-full text-xs">Urgent</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-2 flex items-center space-x-2">
+                            <button class="text-xs bg-blue-600 text-blue-100 px-2 py-1 rounded">Reply</button>
+                            <button class="text-xs bg-purple-600 text-purple-100 px-2 py-1 rounded">🤖 AI Suggest</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Suggestions Panel -->
+            <div class="mt-6 glass-card p-6 rounded-lg">
+                <h3 class="text-lg font-semibold text-gray-100 mb-4">🤖 AI-Powered Email Insights</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-purple-900 bg-opacity-30 p-4 rounded-lg border border-purple-500">
+                        <h4 class="font-medium text-purple-300 mb-2">Smart Response Suggestions</h4>
+                        <p class="text-sm text-gray-300">AI has analyzed your email patterns and suggests 3 template responses for common inquiries.</p>
+                    </div>
+                    <div class="bg-blue-900 bg-opacity-30 p-4 rounded-lg border border-blue-500">
+                        <h4 class="font-medium text-blue-300 mb-2">Priority Recommendations</h4>
+                        <p class="text-sm text-gray-300">Based on sender history and content analysis, 2 emails require immediate attention.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-12 py-6 text-center text-sm text-gray-400 glass-footer">
+        <div class="max-w-7xl mx-auto px-4">
+            © 2024 CRM App - AI-Powered Email Management | 
+            <a href="https://github.com/MuhibChy/crm-app" class="text-indigo-300 hover:text-white">GitHub</a>
+        </div>
+    </footer>
+</body>
+</html>
