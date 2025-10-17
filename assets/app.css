@@ -1,26 +1,53 @@
-/* Global background with subtle gradient and noise for depth */
+/* Global background with professional gradient */
 html, body {
     height: 100%;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 body {
-    background: radial-gradient(1200px 800px at 10% 10%, rgba(99, 102, 241, 0.25), transparent 60%),
-                radial-gradient(1000px 700px at 90% 20%, rgba(236, 72, 153, 0.18), transparent 60%),
-                linear-gradient(180deg, #0f172a 0%, #0b1220 100%);
-    background-attachment: fixed;
-    color: #e5e7eb; /* tailwind gray-200 */
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #0f172a 50%, #1e293b 75%, #0f172a 100%);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    color: #f8fafc;
+    line-height: 1.6;
 }
 
-/* Glass containers */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Professional Glass containers */
 .glass-nav,
 .glass-footer,
 .glass-surface,
 .glass-card {
-    background: rgba(15, 23, 42, 0.35);
-    -webkit-backdrop-filter: blur(14px) saturate(140%);
-    backdrop-filter: blur(14px) saturate(140%);
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    background: rgba(15, 23, 42, 0.85);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    box-shadow: 
+        0 20px 25px -5px rgba(0, 0, 0, 0.1),
+        0 10px 10px -5px rgba(0, 0, 0, 0.04),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+}
+
+.glass-nav {
+    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    background: rgba(15, 23, 42, 0.95);
+}
+
+.glass-surface {
+    border-radius: 16px;
+    padding: 2rem;
+}
+
+.glass-card {
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
 }
 
 .glass-card {
