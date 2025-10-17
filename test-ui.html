@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRM App - UI Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="assets/app.css" rel="stylesheet">
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.13.3/dist/cdn.min.js"></script>
+    <script defer src="assets/app.js"></script>
+</head>
+<body class="text-gray-100">
+    <nav class="glass-nav">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between h-16 items-center">
+                <div class="text-lg font-semibold">CRM App - UI Test</div>
+                <div class="space-x-4 text-sm">
+                    <a href="#" class="text-indigo-300 hover:text-white">Test Link 1</a>
+                    <a href="#" class="text-indigo-300 hover:text-white">Test Link 2</a>
+                    <a href="#" class="text-indigo-300 hover:text-white">Test Link 3</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="max-w-7xl mx-auto mt-6 content-container">
+        <div class="p-6 glass-surface rounded animate-fadeInUp">
+            <h1 class="text-3xl font-bold text-gray-100 mb-6">UI Components Test</h1>
+            
+            <!-- Test Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+                <div class="glass-card p-6 rounded-lg hover:scale-105 transition-transform duration-200">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-300 mb-1">Test Metric 1</p>
+                            <p class="text-2xl font-bold text-blue-400">42</p>
+                        </div>
+                        <div class="text-blue-400 opacity-60">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card p-6 rounded-lg hover:scale-105 transition-transform duration-200">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-300 mb-1">Test Metric 2</p>
+                            <p class="text-2xl font-bold text-green-400">128</p>
+                        </div>
+                        <div class="text-green-400 opacity-60">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card p-6 rounded-lg hover:scale-105 transition-transform duration-200">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-300 mb-1">Test Metric 3</p>
+                            <p class="text-2xl font-bold text-yellow-400">7</p>
+                        </div>
+                        <div class="text-yellow-400 opacity-60">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="glass-card p-6 rounded-lg hover:scale-105 transition-transform duration-200">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <p class="text-sm text-gray-300 mb-1">Test Metric 4</p>
+                            <p class="text-2xl font-bold text-red-400">3</p>
+                        </div>
+                        <div class="text-red-400 opacity-60">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clip-rule="evenodd"></path>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Test Form -->
+            <div class="mt-8">
+                <h2 class="text-xl font-semibold text-gray-100 mb-4">Form Elements Test</h2>
+                <div class="glass-card p-6 rounded-lg">
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+                            <input type="email" class="glass-input w-full rounded px-3 py-2" placeholder="Enter your email">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Password</label>
+                            <input type="password" class="glass-input w-full rounded px-3 py-2" placeholder="Enter your password">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">Message</label>
+                            <textarea class="glass-input w-full rounded px-3 py-2" rows="4" placeholder="Enter your message"></textarea>
+                        </div>
+                        <button type="submit" class="glass-card px-6 py-2 rounded hover:scale-105 transition-transform duration-200">
+                            Submit Test Form
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Test Alerts -->
+            <div class="mt-8">
+                <h2 class="text-xl font-semibold text-gray-100 mb-4">Alert Components Test</h2>
+                <div class="space-y-4">
+                    <div class="alert alert-success">
+                        <strong>Success!</strong> This is a success message.
+                    </div>
+                    <div class="alert alert-error">
+                        <strong>Error!</strong> This is an error message.
+                    </div>
+                    <div class="alert alert-warning">
+                        <strong>Warning!</strong> This is a warning message.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Test Chatbot -->
+    <div x-data="{ open: false }" class="chatbot-root">
+        <button class="chatbot-toggle glass-card rounded-full px-4 py-3 text-sm flex items-center space-x-2"
+                @click="open = !open" aria-label="Open chat">
+            <span x-text="open ? 'Close Chat' : 'Test Chat'"></span>
+        </button>
+
+        <div class="chatbot-panel" x-show="open" x-transition>
+            <div class="chatbot-surface p-3">
+                <div class="flex items-center justify-between mb-2">
+                    <div class="text-sm font-semibold">Test Assistant</div>
+                    <button class="text-xs text-gray-300 hover:text-white" @click="open=false">✕</button>
+                </div>
+                <div class="chatbot-messages space-y-2 mb-2 text-sm">
+                    <div class="chatbot-msg-bot p-2 rounded">Hello! This is a test chatbot interface.</div>
+                    <div class="chatbot-msg-user p-2 rounded">This is how user messages look.</div>
+                </div>
+                <div class="flex space-x-2">
+                    <input type="text" class="flex-1 glass-input rounded px-3 py-2 text-sm" placeholder="Type test message..." />
+                    <button class="glass-card rounded px-3 py-2 text-sm">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="mt-12 py-6 text-center text-sm text-gray-400 glass-footer">
+        <div class="max-w-7xl mx-auto px-4">© 2024 CRM App - UI Test Page</div>
+    </footer>
+</body>
+</html>
