@@ -1,0 +1,22 @@
+🧩 Lightweight Stack
+- TailwindCSS for styling
+- Alpine.js for interactivity
+- PHP for backend logic
+- MySQL for data storage
+
+Setup Steps (Localhost XAMPP)
+1) Start Apache and MySQL in XAMPP.
+2) Create database: `crm_db` in phpMyAdmin.
+3) Import `crm_db.sql` into `crm_db`.
+4) Update `config.php` with your credentials.
+   - DB: host/user/pass
+   - Email: IMAP settings (optional)
+   - OPENAI_API_KEY (optional)
+   - Google Sheet ID/API key (optional)
+5) Visit: `http://localhost/crm-app/dashboard.php` and `http://localhost/crm-app/publicdashboard.php`.
+6) Test chatbot: the chat widget expects POST to `/crm-app/chatbot.php`.
+
+Notes
+- If IMAP is not installed, email features will be skipped safely.
+- If OpenAI key is empty, AI features will show a helpful message.
+- If Google API keys are empty, Sheets integration returns empty data.

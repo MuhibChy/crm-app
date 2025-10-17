@@ -1,0 +1,110 @@
+/* Global background with subtle gradient and noise for depth */
+html, body {
+    height: 100%;
+}
+
+body {
+    background: radial-gradient(1200px 800px at 10% 10%, rgba(99, 102, 241, 0.25), transparent 60%),
+                radial-gradient(1000px 700px at 90% 20%, rgba(236, 72, 153, 0.18), transparent 60%),
+                linear-gradient(180deg, #0f172a 0%, #0b1220 100%);
+    background-attachment: fixed;
+    color: #e5e7eb; /* tailwind gray-200 */
+}
+
+/* Glass containers */
+.glass-nav,
+.glass-footer,
+.glass-surface,
+.glass-card {
+    background: rgba(15, 23, 42, 0.35);
+    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.glass-card {
+    transition: transform 240ms ease, box-shadow 240ms ease, border-color 240ms ease;
+}
+
+.glass-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* Typography contrast tweaks */
+h1, h2, h3, h4, h5, h6 {
+    color: #f3f4f6; /* gray-100 */
+}
+
+/* Cards grid spacing on small screens */
+.content-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* Motion primitives */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fadeInUp {
+    animation: fadeInUp 420ms ease both;
+}
+
+/* Chatbot styles */
+.chatbot-toggle {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 60;
+}
+
+.chatbot-panel {
+    position: fixed;
+    right: 20px;
+    bottom: 86px;
+    width: 340px;
+    max-width: calc(100vw - 40px);
+    z-index: 60;
+}
+
+.chatbot-surface {
+    background: rgba(15, 23, 42, 0.6);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 14px;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.5);
+}
+
+.chatbot-messages {
+    max-height: 360px;
+    overflow-y: auto;
+}
+
+.chatbot-msg-user {
+    background: rgba(99, 102, 241, 0.18);
+    border: 1px solid rgba(99, 102, 241, 0.35);
+}
+
+.chatbot-msg-bot {
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Inputs on dark glass */
+.glass-input {
+    background: rgba(255, 255, 255, 0.06);
+    color: #f3f4f6;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.glass-input::placeholder { color: rgba(229, 231, 235, 0.5); }
+
+/* Override some Tailwind base bg to be transparent when used */
+.bg-white { background-color: rgba(255,255,255,0.06) !important; }
+.shadow { box-shadow: 0 10px 30px rgba(0,0,0,0.35) !important; }
+

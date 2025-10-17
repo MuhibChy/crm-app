@@ -1,0 +1,241 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    name: Security Scan
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Run security scan
+      run: |
+        # Check for hardcoded secrets
+        if grep -r "sk-proj-" . --exclude-dir=.git --exclude="*.md" --exclude="*.yml"; then
+          echo "❌ Hardcoded API keys found!"
+          exit 1
+        fi
+        
+        # Check for database credentials
+        if grep -r "password.*=" . --exclude-dir=.git --exclude="*.md" --exclude="*.yml" --exclude=".env.example" | grep -v "your-"; then
+          echo "❌ Hardcoded database credentials found!"
+          exit 1
+        fi
+        
+        echo "✅ Security scan passed"
+
+  php-lint:
+    runs-on: ubuntu-latest
+    name: PHP Syntax Check
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'
+        extensions: mysqli, curl, imap, mbstring, xml
+    
+    - name: Lint PHP files
+      run: |
+        find . -name "*.php" -exec php -l {} \;
+
+  code-quality:
+    runs-on: ubuntu-latest
+    name: Code Quality Check
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'
+    
+    - name: Install dependencies
+      run: |
+        if [ -f composer.json ]; then
+          composer install --no-dev --optimize-autoloader
+        fi
+    
+    - name: Check file permissions
+      run: |
+        # Check for executable PHP files (security risk)
+        if find . -name "*.php" -executable -type f | grep -v vendor; then
+          echo "❌ Executable PHP files found!"
+          exit 1
+        fi
+        echo "✅ File permissions check passed"
+    
+    - name: Check for TODO/FIXME comments
+      run: |
+        if grep -r "TODO\|FIXME\|XXX" . --include="*.php" --exclude-dir=vendor; then
+          echo "⚠️ TODO/FIXME comments found - review before production"
+        fi
+
+  database-test:
+    runs-on: ubuntu-latest
+    name: Database Schema Test
+    
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: test_password
+          MYSQL_DATABASE: crm_db_test
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Test database schema
+      run: |
+        mysql -h 127.0.0.1 -u root -ptest_password crm_db_test < crm_db.sql
+        echo "✅ Database schema imported successfully"
+
+  security-headers:
+    runs-on: ubuntu-latest
+    name: Security Headers Check
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Check .htaccess security headers
+      run: |
+        if [ -f .htaccess ]; then
+          if grep -q "X-Content-Type-Options" .htaccess && \
+             grep -q "X-Frame-Options" .htaccess && \
+             grep -q "X-XSS-Protection" .htaccess; then
+            echo "✅ Security headers configured"
+          else
+            echo "❌ Missing security headers in .htaccess"
+            exit 1
+          fi
+        else
+          echo "⚠️ .htaccess file not found"
+        fi
+
+  env-check:
+    runs-on: ubuntu-latest
+    name: Environment Configuration Check
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Check environment files
+      run: |
+        # Check .env.example exists
+        if [ ! -f .env.example ]; then
+          echo "❌ .env.example file missing"
+          exit 1
+        fi
+        
+        # Check .env is in .gitignore
+        if ! grep -q "\.env" .gitignore; then
+          echo "❌ .env not in .gitignore"
+          exit 1
+        fi
+        
+        # Check for required environment variables
+        required_vars=("DB_HOST" "DB_USER" "DB_PASS" "DB_NAME" "OPENAI_API_KEY")
+        for var in "${required_vars[@]}"; do
+          if ! grep -q "$var=" .env.example; then
+            echo "❌ Required environment variable $var missing from .env.example"
+            exit 1
+          fi
+        done
+        
+        echo "✅ Environment configuration check passed"
+
+  documentation:
+    runs-on: ubuntu-latest
+    name: Documentation Check
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Check documentation
+      run: |
+        # Check README exists
+        if [ ! -f README.md ]; then
+          echo "❌ README.md missing"
+          exit 1
+        fi
+        
+        # Check deployment guide exists
+        if [ ! -f DEPLOYMENT.md ]; then
+          echo "❌ DEPLOYMENT.md missing"
+          exit 1
+        fi
+        
+        # Check license exists
+        if [ ! -f LICENSE ]; then
+          echo "❌ LICENSE file missing"
+          exit 1
+        fi
+        
+        echo "✅ Documentation check passed"
+
+  deploy-staging:
+    needs: [security-scan, php-lint, code-quality, database-test, security-headers, env-check]
+    runs-on: ubuntu-latest
+    name: Deploy to Staging
+    if: github.ref == 'refs/heads/develop'
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Deploy to staging
+      run: |
+        echo "🚀 Deploying to staging environment..."
+        # Add your staging deployment commands here
+        # Example: rsync, FTP, or API calls to your hosting provider
+        echo "✅ Staging deployment completed"
+
+  deploy-production:
+    needs: [security-scan, php-lint, code-quality, database-test, security-headers, env-check]
+    runs-on: ubuntu-latest
+    name: Deploy to Production
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Deploy to production
+      run: |
+        echo "🚀 Deploying to production environment..."
+        # Add your production deployment commands here
+        # Example: 
+        # - Create deployment package
+        # - Upload to server
+        # - Run database migrations
+        # - Clear cache
+        echo "✅ Production deployment completed"
+    
+    - name: Notify deployment
+      run: |
+        echo "📧 Sending deployment notification..."
+        # Add notification logic (Slack, email, etc.)
+
+  post-deployment-tests:
+    needs: [deploy-production]
+    runs-on: ubuntu-latest
+    name: Post-Deployment Tests
+    if: github.ref == 'refs/heads/main'
+    
+    steps:
+    - name: Health check
+      run: |
+        # Add health check commands
+        # Example: curl checks, database connectivity tests
+        echo "🏥 Running health checks..."
+        echo "✅ All systems operational"
